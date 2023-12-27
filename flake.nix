@@ -16,12 +16,12 @@
 
       in rec {
         # For `nix build` & `nix run`:
-        defaultPackage = naersk'.buildPackage {
+        packages.default = naersk'.buildPackage {
           src = ./node;
         };
 
         # For `nix develop`:
-        devShell = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [ rustc cargo ];
         };
       }
